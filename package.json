@@ -1,4 +1,10 @@
 {
+  "name": "m4-sp6-kimoveis-gabifontoura",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Kenzie-Academy-Brasil-Developers/m4-sp6-kimoveis-gabifontoura.git",
+  "author": "Gabriela <gabrielagarciafontoura@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "test": "jest --verbose --runInBand",
     "dev": "tsnd --cls --rs --ignore-watch node_modules src/server.ts",
@@ -12,7 +18,7 @@
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.9.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.10",
+    "typeorm": "0.3.10",
     "zod": "^3.21.0"
   },
   "devDependencies": {
@@ -29,11 +35,5 @@
     "ts-jest": "^28.0.8",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.5"
-  },
-  "name": "m4-sp6-kimoveis-gabifontoura",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:Kenzie-Academy-Brasil-Developers/m4-sp6-kimoveis-gabifontoura.git",
-  "author": "Gabriela <gabrielagarciafontoura@gmail.com>",
-  "license": "MIT"
+  }
 }
