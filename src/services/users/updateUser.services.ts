@@ -12,9 +12,11 @@ export const updateUserService = async (newUserData: tUserUpdate, idUser: number
         id: idUser
     })
 
+    const { admin, ...userDataWithoutIdAndAdmin } = newUserData;
+
     const user = userRepository.create({
         ...oldUserData,
-        ...newUserData
+        ...userDataWithoutIdAndAdmin
     })
 
     await userRepository.save(user)
