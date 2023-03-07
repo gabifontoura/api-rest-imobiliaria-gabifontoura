@@ -1,42 +1,41 @@
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn
-} from 'typeorm';
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  OneToMany,
+} from "typeorm";
+import { Schedule } from "./schedulesUsersProperties.entity";
 
-@Entity('users')
+@Entity("users")
+export class User {
+  @PrimaryGeneratedColumn("increment")
+  id: number;
 
-class User {
+  @Column({ length: 45 })
+  name: string;
 
-    @PrimaryGeneratedColumn('increment')
-    id: number
+  @Column({ length: 45, unique: true })
+  email: string;
 
-    @Column({ length: 45 })
-    name: string
+  @Column()
+  admin: boolean;
 
-    @Column({ length: 45, unique: true })
-    email: string
+  @Column({ length: 120 })
+  password: string;
 
-    @Column()
-    admin: boolean
+  @CreateDateColumn({ type: "timestamp" })
+  createdAt: string;
 
-    @Column({ length: 120 })
-    password: string
+  @UpdateDateColumn({ type: "timestamp" })
+  updatedAt: string;
 
-    @CreateDateColumn()
-    createdAt: string
+  @DeleteDateColumn({ type: "timestamp", nullable: true })
+  deletedAt: string;
 
-    @UpdateDateColumn()
-    updatedAt: string
+  @OneToMany(() => Schedule, (schedules) => schedules.user)
+  schedules: Schedule[];
 
-    @DeleteDateColumn({ type:'timestamp', nullable:true })
-    deletedAt: string
-
-}
-
-export {
-    User
 }
