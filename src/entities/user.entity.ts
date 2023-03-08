@@ -1,42 +1,52 @@
+import { getRounds, hashSync } from "bcryptjs";
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn
-} from 'typeorm';
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  OneToMany,
+  BeforeInsert,
+  BeforeUpdate,
+} from "typeorm";
+import { Schedule } from "./schedulesUsersProperties.entity";
 
-@Entity('users')
+@Entity("users")
+export class User {
+  @PrimaryGeneratedColumn("increment")
+  id: number;
 
-class User {
+  @Column({ length: 45 })
+  name: string;
 
-    @PrimaryGeneratedColumn('increment')
-    id: number
+  @Column({ length: 45, unique: true })
+  email: string;
 
-    @Column({ length: 45 })
-    name: string
+  @Column({ default: false})
+  admin: boolean;
 
-    @Column({ length: 45, unique: true })
-    email: string
+  @Column({ length: 120 })
+  password: string;
 
-    @Column()
-    admin: boolean
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
 
-    @Column({ length: 120 })
-    password: string
+  @UpdateDateColumn({ type: "date" })
+  updatedAt: string;
 
-    @CreateDateColumn()
-    createdAt: string
+  @DeleteDateColumn({ type: "date", nullable: true })
+  deletedAt: string;
 
-    @UpdateDateColumn()
-    updatedAt: string
+  @OneToMany(() => Schedule, (schedules) => schedules.user)
+  schedules: Schedule[];
 
-    @DeleteDateColumn({ type:'timestamp', nullable:true })
-    deletedAt: string
-
-}
-
-export {
-    User
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword() {
+    const isEncript = getRounds(this.password);
+    if (!isEncript) {
+      this.password = hashSync(this.password, 10);
+    }
+  }
 }

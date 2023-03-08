@@ -7,7 +7,7 @@ export const ensureIsAdmin = async (
   ): Promise<Response | void> => {
 
     if (!req.user.admin) {
-      res.status(403).json({ message: 'Insufficient Permission' });
+      res.status(403).json({ message: 'Insufficient permission' });
     } 
     
     return next();

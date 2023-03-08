@@ -15,7 +15,7 @@ export const ensureEmailIsUnique = async (req: Request, res: Response, next: Nex
         })
        
         if(verifyEmail){
-            throw new AppError("Email already exists.", 409)
+            throw new AppError("Email already exists", 409)
         }
     }
 

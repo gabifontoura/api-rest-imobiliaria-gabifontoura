@@ -21,15 +21,15 @@ export const listUsersController = async (req: Request, res: Response) => {
 
 export const updateUserController = async (req: Request, res: Response) => {
   const userData: tUserUpdate = req.body;
-  const userId = parseInt(req.params.id);
+  const userId: number = parseInt(req.params.id);
 
-  const updatedUser = await updateUserService(userData, userId);
+  const updatedUser: tUserUpdate = await updateUserService(userData, userId);
 
   return res.json(updatedUser);
 };
 
 export const deleteUserController = async (req: Request, res: Response) => {
-  const userId = parseInt(req.params.id);
+  const userId: number = parseInt(req.params.id);
 
   await deleteUserService(userId);
 
