@@ -9,6 +9,6 @@ import { realEstateSchema } from "../schemas/realEstate.schemas";
 const realEstateRoutes: Router = Router();
 
 realEstateRoutes.post( "", ensureTokenIsValid, ensureIsAdmin, ensureDataIsValid(realEstateSchema), ensureCategoryNameIsUnique, createRealEstateController);
-realEstateRoutes.get("",ensureTokenIsValid, ensureIsAdmin, listAllPropertiesController);
+realEstateRoutes.get("", listAllPropertiesController);
 
 export default realEstateRoutes;

@@ -18,4 +18,8 @@ export const returnRealEstateSchema = realEstateSchema.omit({categoryId: true}).
   sold: z.boolean().default(false)
 });
 
+export const returnRealEstateWithoutCategory = returnRealEstateSchema.omit({category: true})
+
+
+export const returnAllRealEstateSchema = returnRealEstateWithoutCategory.array()
 

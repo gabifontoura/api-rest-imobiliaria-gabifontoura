@@ -8,8 +8,6 @@ import {
 } from "../../interfaces/realEstate.interfaces";
 import { returnRealEstateSchema } from "../../schemas/realEstate.schemas";
 
-
-
 export const createRealEstateService = async (
   realEstateData: tPropertyRequest
 ): Promise<tFullRealEstateReturn> => {
@@ -42,17 +40,14 @@ export const createRealEstateService = async (
       throw new AppError('Category not found', 404)
   }
 
-  console.log(findCategory)
-
   const address = addressRepository.create(realEstateData.address);
   await addressRepository.save(address);
 
   const realEstate: RealEstate = realEstateRepository.create(realEstateData);
   
-
   realEstate.address = address;
 
-  realEstate.category = findCategory
+  realEstate.category = findCategory;
 
   await realEstateRepository.save(realEstate);
 

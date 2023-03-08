@@ -36,7 +36,7 @@ export class RealEstate {
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category, (categories) => categories.realEstate)
+  @ManyToOne(() => Category, (categories) => categories.realEstate, { nullable:true })
   category: Category;
 
   @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
