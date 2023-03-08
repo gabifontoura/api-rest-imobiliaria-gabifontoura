@@ -14,7 +14,7 @@ export const ensureCategoryNameIsUnique = async (req: Request, res: Response, ne
         })
        
         if(verifyCategoryName){
-            throw new AppError("Category already exists.", 409)
+            throw new AppError("Category already exists", 409)
         }
     }
 

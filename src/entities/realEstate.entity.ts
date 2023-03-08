@@ -17,8 +17,8 @@ import { Schedule } from "./schedulesUsersProperties.entity";
 export class RealEstate {
   @PrimaryGeneratedColumn("increment")
   id: number;
-  @Column({ type: "boolean", default: true })
-  sold: boolean = false;
+  @Column({ type: "boolean", default: false })
+  sold: boolean;
 
   @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
   value: number | string;
@@ -26,10 +26,10 @@ export class RealEstate {
   @Column({ type: "integer" })
   size: number;
 
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn({ type: "date" })
   createdAt: string;
 
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn({ type: "date" })
   updatedAt: string;
 
   @OneToOne(() => Address)

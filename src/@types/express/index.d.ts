@@ -1,4 +1,5 @@
 import * as express from "express";
+import { Category } from "../../entities";
 
 declare global {
   namespace Express {
@@ -6,6 +7,9 @@ declare global {
       user: {
         id: number;
         admin: boolean;
+      };
+      category: {
+        id: number;
       };
     }
   }

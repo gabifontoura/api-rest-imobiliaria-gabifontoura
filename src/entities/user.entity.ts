@@ -20,22 +20,21 @@ export class User {
   @Column({ length: 45, unique: true })
   email: string;
 
-  @Column()
+  @Column({ default: false})
   admin: boolean;
 
   @Column({ length: 120 })
   password: string;
 
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn()
   createdAt: string;
 
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn()
   updatedAt: string;
 
-  @DeleteDateColumn({ type: "timestamp", nullable: true })
+  @DeleteDateColumn({ nullable: true })
   deletedAt: string;
 
   @OneToMany(() => Schedule, (schedules) => schedules.user)
   schedules: Schedule[];
-
 }

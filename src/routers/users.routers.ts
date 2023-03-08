@@ -17,7 +17,7 @@ const usersRoutes: Router = Router();
 
 usersRoutes.post( "", ensureDataIsValid(userSchema), ensureEmailIsUnique, createUserController);
 usersRoutes.get("", ensureTokenIsValid, ensureIsAdmin, listUsersController);
-usersRoutes.delete( "/:id", ensureTokenIsValid, ensureIsAdmin, ensureUserExists, deleteUserController);
-usersRoutes.patch( "/:id", ensureDataIsValid(usersUpdateSchema), ensureTokenIsValid, ensureUserExists, ensurePermission, updateUserController);
+usersRoutes.delete( "/:id", ensureTokenIsValid,ensureUserExists, ensureIsAdmin, deleteUserController);
+usersRoutes.patch( "/:id", ensureDataIsValid(usersUpdateSchema),  ensureEmailIsUnique,  ensureTokenIsValid, ensureUserExists, ensurePermission, updateUserController);
  
 export default usersRoutes;

@@ -9,6 +9,6 @@ export const ensurePermission = async (
     if (req.user.id === parseInt(req.params.id) || req.user.admin) {
       next();
     } else {
-      res.status(403).json({ message: 'Insufficient Permission' });
+      res.status(403).json({ message: 'Insufficient permission' });
     }
   }
