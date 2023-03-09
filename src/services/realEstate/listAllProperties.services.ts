@@ -7,7 +7,7 @@ import { tAllRealEstateReturn} from "../../interfaces/realEstate.interfaces";
 export const listAllPropertiesService = async (): Promise<tAllRealEstateReturn> => {
     const realEstateRepository: Repository<RealEstate> = AppDataSource.getRepository(RealEstate);
   
-    const findRealEstate = await realEstateRepository.find({
+    const findRealEstate: RealEstate[] = await realEstateRepository.find({
       relations: ["address"]
     })
   

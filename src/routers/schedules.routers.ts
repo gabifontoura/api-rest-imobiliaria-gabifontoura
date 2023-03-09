@@ -1,14 +1,13 @@
 import { Router } from "express";
-import { createScheduleAppointmentController } from "../controllers/schedules.controllers";
+import { createScheduleAppointmentController, listPropertyScheduleController } from "../controllers/schedules.controllers";
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middlewares";
-
-import { ensurePermission } from "../middlewares/ensurePermission.middlewares";
+import { ensureIsAdmin } from "../middlewares/ensureIsAdmin.middlewares";
 import { ensureTokenIsValid } from "../middlewares/ensureTokenIsValid.middlewares";
 import { scheduleSchema } from "../schemas/schedules.schemas";
 
 const schedulesRoutes: Router = Router();
 
-schedulesRoutes.post("", ensureTokenIsValid, ensurePermission, ensureDataIsValid(scheduleSchema), createScheduleAppointmentController)
-
+schedulesRoutes.post("", ensureTokenIsValid, ensureDataIsValid(scheduleSchema), createScheduleAppointmentController)
+schedulesRoutes.get("/realEstate/:id", ensureTokenIsValid, ensureIsAdmin, listPropertyScheduleController)
 
 export default schedulesRoutes

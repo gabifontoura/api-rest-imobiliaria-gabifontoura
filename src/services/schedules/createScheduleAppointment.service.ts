@@ -1,17 +1,15 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { RealEstate, Schedule } from "../../entities";
+import { RealEstate, Schedule, User } from "../../entities";
 import { AppError } from "../../errors";
 import {
-  tSchedule,
-  tScheduleReturn,
+  tSchedule
 } from "../../interfaces/schedules.interfaces";
-import { returnAppointmentSchema } from "../../schemas/schedules.schemas";
 
 export const createScheduleAppointmentService = async (
   appointmentData: tSchedule,
   userId: number
-): Promise<tScheduleReturn> => {
+): Promise<Schedule> => {
   const realEstateRepository: Repository<RealEstate> = AppDataSource.getRepository(RealEstate);
   const scheduleRepository: Repository<Schedule> = AppDataSource.getRepository(Schedule);
 
@@ -25,10 +23,15 @@ export const createScheduleAppointmentService = async (
   if (!realEstate) {
     throw new AppError("RealEstate not found", 404);
   }
-
+  const userRepository: Repository<User> = AppDataSource.getRepository(User)
   const date = appointmentData.date;
   const hour = appointmentData.hour;
 
+  const finduser = await userRepository.findOne({
+    where: {
+      id: userId,
+    },
+  });
 
 const userSchedule = await scheduleRepository
 .createQueryBuilder("schedule")
@@ -73,16 +76,13 @@ if (existingSchedule) {
   const schedule = {
     date,
     hour,
-    realEstateId:propertyId,
-    userId:userId
+    realEstate:realEstate!,
+    user:finduser!
   };
 
   const appointment: Schedule = scheduleRepository.create(schedule);
 
   await scheduleRepository.save(appointment);
 
-  const newAppointment: tScheduleReturn =
-    returnAppointmentSchema.parse(appointment);
-
-  return newAppointment;
+  return appointment;
 };
