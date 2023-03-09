@@ -5,6 +5,7 @@ import userRoutes from "./routers/users.routers";
 import loginRoutes from "./routers/login.routers";
 import categoriesRoutes from "./routers/categories.routers";
 import realEstateRoutes from "./routers/realEstate.routers";
+import schedulesRoutes from "./routers/schedules.routers";
 
 const app: Application = express();
 
@@ -14,7 +15,7 @@ app.use("/users", userRoutes);
 app.use("/login", loginRoutes)
 app.use("/categories", categoriesRoutes);
 app.use("/realEstate", realEstateRoutes);
-// app.use("/schedules", scheduleRoutes);
+app.use("/schedules", schedulesRoutes);
 
 app.use(handleErrors);
 

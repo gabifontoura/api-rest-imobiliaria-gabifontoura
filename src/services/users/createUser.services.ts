@@ -12,7 +12,7 @@ export const createUserService = async (userData: tUser): Promise<tUserReturn> =
 
     await userRepository.save(user)
     
-    const newUser = returnUserSchema.parse(user)
+    const newUser:tUserReturn = returnUserSchema.parse(user)
     
     return newUser
 
