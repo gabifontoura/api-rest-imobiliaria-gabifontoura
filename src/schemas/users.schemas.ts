@@ -14,7 +14,6 @@ export const returnUserSchema = userSchema.extend({
     createdAt: z.date().or(z.string()),
     updatedAt: z.date().or(z.string()),
     deletedAt: z.date().or(z.string()).nullish(),
-
 }).omit({password: true})
 
 export const returnAllUsersSchema = returnUserSchema.array()

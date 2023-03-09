@@ -21,7 +21,7 @@ export const updateUserService = async (newUserData: tUserUpdate, idUser: number
 
     await userRepository.save(user)
 
-    const updatedUser = returnUserSchema.parse(user)
+    const updatedUser:tUserReturn = returnUserSchema.parse(user)
 
     return updatedUser
 

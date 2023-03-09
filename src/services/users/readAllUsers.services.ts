@@ -10,7 +10,7 @@ export const listUsersService = async (): Promise<tAllUsersReturn> => {
 
     const findUsers: User[] = await userRepository.find({ withDeleted: true })
 
-    const users = returnAllUsersSchema.parse(findUsers)
+    const users:tAllUsersReturn = returnAllUsersSchema.parse(findUsers)
 
     return users
 
