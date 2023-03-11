@@ -7,7 +7,7 @@ export const ensureTokenIsValid = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {
+): Promise<Response | void> => {
   let token = req.headers.authorization;
 
   if (!token) {

@@ -7,7 +7,7 @@ export const listAllCategoryPropertiesService = async (categoryId: number) => {
   const categoryRepository: Repository<Category> =
     AppDataSource.getRepository(Category);
 
-  const findCategory = await categoryRepository.findOne({
+  const findCategory: Category | null = await categoryRepository.findOne({
     where: {
       id: categoryId,
     },
@@ -16,12 +16,13 @@ export const listAllCategoryPropertiesService = async (categoryId: number) => {
   if (!findCategory) {
     throw new AppError("Category not found", 404);
   }
-  const properties = await categoryRepository.findOne({
+    
+  const properties: Category | null = await categoryRepository.findOne({
     where: {
       id: categoryId,
     },
     relations: {
-      realEstate: true,
+      realEstate: true
     },
   });
 

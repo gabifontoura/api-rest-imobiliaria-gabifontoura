@@ -7,7 +7,7 @@ export const createLoginController = async (req: Request, res: Response): Promis
 
     const loginData: tLogin = req.body
 
-    const token = await createLoginService(loginData)
+    const token: string = await createLoginService(loginData)
 
     return res.status(200).json({
         token: token

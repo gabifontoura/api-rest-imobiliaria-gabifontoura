@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { returnRealEstateSchema } from "./realEstate.schemas";
 
 export const categorySchema = z.object({
     name: z.string(),

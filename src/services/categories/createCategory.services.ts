@@ -11,7 +11,7 @@ export const createCategoryService = async (categoryData: tCategory): Promise<tC
 
   await categoryRepository.save(categories);
 
-  const newCategory = returnCategorySchema.parse(categories);
+  const newCategory: tCategoryReturn = returnCategorySchema.parse(categories);
 
   return newCategory;
 };

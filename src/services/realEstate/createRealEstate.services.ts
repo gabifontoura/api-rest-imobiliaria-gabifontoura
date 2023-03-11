@@ -50,8 +50,6 @@ export const createRealEstateService = async (
   realEstate.category = findCategory;
 
   await realEstateRepository.save(realEstate);
-
-  const newRealEstate = returnRealEstateSchema.parse(realEstate);
   
-  return newRealEstate;
+  return realEstate;
 };
