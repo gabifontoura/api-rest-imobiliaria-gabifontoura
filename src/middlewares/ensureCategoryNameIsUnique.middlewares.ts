@@ -4,7 +4,7 @@ import { AppDataSource } from '../data-source'
 import { Category } from '../entities'
 import { AppError } from '../errors'
 
-export const ensureCategoryNameIsUnique = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const ensureCategoryNameIsUnique = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
 
     const usersRepository: Repository<Category> = AppDataSource.getRepository(Category)
 

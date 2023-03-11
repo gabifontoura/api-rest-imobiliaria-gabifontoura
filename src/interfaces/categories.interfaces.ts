@@ -4,8 +4,3 @@ import { categorySchema, returnAllCategoriesSchema, returnCategorySchema } from 
 export type tCategory = z.infer<typeof categorySchema>;
 export type tCategoryReturn = z.infer<typeof returnCategorySchema>;
 export type tAllCategoriesReturn = z.infer<typeof returnAllCategoriesSchema>
-
-
-
-
-

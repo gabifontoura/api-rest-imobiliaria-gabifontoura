@@ -5,7 +5,7 @@ import { User } from '../entities'
 
 import { AppError } from '../errors'
 
-export const ensureEmailIsUnique = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const ensureEmailIsUnique = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
 
     const usersRepository: Repository<User> = AppDataSource.getRepository(User)
 

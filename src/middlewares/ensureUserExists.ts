@@ -4,7 +4,7 @@ import { AppDataSource } from '../data-source'
 import { User } from '../entities'
 import { AppError } from '../errors'
 
-export const ensureUserExists = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const ensureUserExists = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
 
     const userRepository: Repository<User> = AppDataSource.getRepository(User)
 
