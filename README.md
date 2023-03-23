@@ -1,6 +1,6 @@
 # Projeto Imobiliária - TypeORM com Relacionamentos
 
-<br>Esse é o projeto final do curso no qual aprendi desenvolver APIs REST com CRUD completo.
+<br>Esse é o projeto final do curso no qual aprendi desenvolver APIs REST com CRUD completo e rotas protegidas.
 <br>Utilizei NodeJS, TypeScript, TypeORM, integrada ao banco de dados realcional PostgreSQL<br>
 Desenvolvi sozinha em 1 semana <br>
 
